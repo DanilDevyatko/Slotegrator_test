@@ -1,0 +1,234 @@
+// The design has discrepancies in font sizes, I choose a tablet version
+
+// normalize
+@import 'normalize.css';
+
+// variables
+:root {
+    --main-text-font: 'Red Hat Display', sans-serif;
+
+    --main-text-size: 14px;
+    --larg-text-size: 18px;
+
+    --main-text-color: #16103E;
+
+    --button-hover-background: #E3E8EC;
+  }
+
+// global
+  * {
+    font-size: var(--main-text-size);
+    color: var(--main-text-color);
+    font-family: var(--main-text-font);
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  img {
+    max-width: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .container {
+    max-width: 1362px;
+    width: 100%;
+    padding: 0 30px;
+    margin: 0 auto;
+
+    // 2 sids 30px = 60px; 1362px + 60px = 1422px;
+    @media (min-width: 1422px) {
+      padding: 0;
+    }
+  }
+
+// elements
+
+h1 {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    margin: 0;
+
+    @media (min-width: 809px) {
+      font-size: 33px;
+    }
+
+    @media (min-width: 1280px) {
+      font-size: 40px;
+    }
+}
+
+button {
+    display: flex;
+    align-items: center;
+    background-color: #F6F8FA;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 13px;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+        background-color: var(--button-hover-background);
+    }
+}
+
+.button__icon {
+    margin-right: 9px;
+    width: 20px;
+    height: 20px;
+}
+
+.button__text {
+  white-space: nowrap;
+}
+
+// interactive
+body {
+  &.map_interactive-open {
+    .map_tablet {
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+      position: absolute;
+      left: -100%;
+    }
+  }
+
+  &.map_tablet-open {
+    .map_interactive {
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+      position: absolute;
+      left: -100%;
+    }
+  }
+}
+
+// section map
+.map__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px 0;
+}
+
+.map__title {
+  margin-right: 40px;
+}
+
+.disclaimer {
+  max-width: 986px;
+  margin-top: 0;
+}
+
+.disclaimer__text, .disclaimer__title {
+  font-size: var(--larg-text-size);
+  line-height: 1.5;
+  display: inline;
+}
+
+.map_interactive {
+  transition: all .5s;
+}
+
+.map-tablet {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(80px, 1fr) repeat(4, minmax(270px, 1fr));
+  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  overflow-x: scroll;
+  border-radius: 15px;
+  transition: all .5s;
+  box-shadow: 0px 4px 5px 0px #001A421A;
+}
+
+.map__content {
+  margin-bottom: 40px;
+}
+
+.map-tablet__heading {
+  background-color: #001A421A;
+  line-height: 1.5;
+  padding: 10px 15px;
+  font-weight: 700;
+}
+
+.map-tablet__row {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.map-tablet__item {
+  border-right: 1px solid #16103E33;
+
+  &:nth-child(6n+6) {
+    border-right: none;
+  }
+}
+
+.map-tablet__row_bold {
+  font-weight: 700;
+}
+
+.map-tablet__mark {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.map-tablet__mark_red {
+  background-color: #E92121;
+}
+
+.map-tablet__mark_green {
+  background-color: #3AAA38;
+}
+
+.map-tablet__mark_blue {
+  background-color: #3699C3;
+}
+
+.map-tablet__mark_yellow {
+  background-color: #EE9440;
+}
+
+.map-tablet__text {
+  margin-right: 10px;
+}
+
+.map-tablet__search {
+  padding: 4px;
+
+  input {
+    width: 100%;
+    line-height: 1.5;
+    font-size: 16px;
+    border: 1px solid #16103E4D;
+    border-radius: 10px;
+    padding: 5px 10px 5px 14px;
+  }
+}
+
+.map-tablet__dropdown {
+  padding: 4px;
+
+  select {
+    border: 1px solid #16103E4D;
+    width: 100%;
+    border-radius: 10px;
+    height: 38px;
+    padding: 0 14px;
+  }
+}
